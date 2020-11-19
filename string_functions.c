@@ -1,6 +1,25 @@
 #include "shell.h"
 
 /**
+ * _strlen - function that returns the length of a string
+ * @s: var received
+ * Return: Always 0.
+ */
+
+int _strlen(char *s)
+
+{
+
+	int n;
+
+	while (s[n])
+	{
+		n++;
+	}
+	return (n);
+}
+
+/**
  * _strcmp - compare two strings
  *
  * @s1: parameter
