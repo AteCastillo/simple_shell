@@ -8,23 +8,25 @@
 
 int main(void)
 {
-	int i, status;
+	int i, status, ret;
+	size_t size = 0;
 	pid_t child_pid;
-	char **argv = NULL, **toks = NULL, *string = NULL, *str = NULL;
+	char **argv = NULL, **toks = NULL, *string = NULL;
 
-	string = malloc(sizeof(char) * 512); /* memory assignations */
-	toks = malloc(sizeof(char *) * 64);
-	for (i = 0; i < 64; i++)
-		toks[i] = malloc(sizeof(char) * 32);
+	/*string = malloc(sizeof(char) * ; memory assignations */
+	toks = malloc(sizeof(char *) * 32); /* 512 bytes total */
+	for (i = 0; i < 32; i++)
+		toks[i] = NULL;
 	while (1) /* loop is broken by user input */
 	{
 		write(1, "($) ", 4);
-		str = _getnewline(string);
-		if (str == NULL) /* check for EOF */
+		ret = getline(&string, &size, stdin);
+		string = _getnewline(string, ret);
+		if (string == NULL) /* check for EOF */
 			break;
-		else if (str[0] == '\n') /* user hit return without any other input */
+		else if (string[0] == '\n') /* user hit return without any other input */
 			continue;
-		argv = tokenize(str, toks); /* load argv with tokens */
+		argv = tokenize(string, toks); /* load argv with tokens */
 		child_pid = fork();
 		if (child_pid == -1) /* check return of fork */
 			continue;
@@ -38,8 +40,8 @@ int main(void)
 			wait(&status);
 	}
 	free(string); /* free memory */
-	for (i = 0; i < 64; i++)
-		free(argv[i]);
-	free(argv);
+	for (i = 0; i < 32; i++)
+		free(toks[i]);
+	free(toks);
 	return (0);
 }

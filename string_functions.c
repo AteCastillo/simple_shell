@@ -32,7 +32,7 @@ int _strcmp(char *s1, char *s2)
 {
 	int x, ret;
 
-	for (x = 0; s1[x] != '\0' && s2[x] != '\0'; x++)
+	for (x = 0; s1[x] != '\0' || s2[x] != '\0'; x++)
 	{
 		if (s1[x] != s2[x])
 		{
@@ -79,7 +79,7 @@ int _strncmp(char *s1, char *s2, int n)
  *
  * Return: pointer to duplicated string, NULL otherwise
  */
-
+/*
 char *_strdup(char *str)
 {
 	int i, j;
@@ -101,5 +101,4 @@ char *_strdup(char *str)
 		new[j] = str[j];
 
 	return (new);
-	free(new);
-}
+}*/

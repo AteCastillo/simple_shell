@@ -7,16 +7,16 @@
  * Return: a pointer.
  */
 
-char *_getnewline(char *string)
+char *_getnewline(char *string, int get)
 {
-	int get = 0;
+/*	int get = 0;
 	size_t size = 0;
-	char *newline = "\n";
+*/	char *newline = "\n";
 	char *exit = "exit";
 	char *env = "env";
 
-	get = getline(&string, &size, stdin);
-	if (get == -1) /*if error and EOF for ctrl+d */
+/*	get = getline(&string, &size, stdin);
+*/	if (get == -1) /*if error and EOF for ctrl+d */
 	{
 		if (get == EOF)
 			return (NULL);
@@ -28,10 +28,7 @@ char *_getnewline(char *string)
 	get = _strlen(string); /*to remove new line at the end of the string */
 	string[get - 1] = '\0';
 	if (_strcmp(string, exit) == 0) /*to compare exit and leave the shell */
-	{
-		free(string);
 		return (NULL);
-	}
 	if (_strcmp(string, env) == 0) /*to print the enviroment variables */
 	{
 		_printenv();
@@ -57,10 +54,13 @@ char **tokenize(char *string, char **toks)
 	token = strtok(string, " ");
 	while (token)
 	{
+		toks[i] = malloc(sizeof(char) * 64);
 		toks[i] = token;
 		token = strtok(NULL, " ");
 		i++;
 	}
 	toks[i] = NULL;
+
+	free(token);
 	return (toks);
 }
