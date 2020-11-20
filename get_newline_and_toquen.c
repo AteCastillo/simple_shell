@@ -49,7 +49,7 @@ char *_getnewline(char *string)
   * Return: double pointer (argument vector)
   */
 
-char **tokenize(char *string, char **argv)
+char **tokenize(char *string, char **toks)
 {
 	char *token = NULL;
 	int i = 0;
@@ -57,10 +57,10 @@ char **tokenize(char *string, char **argv)
 	token = strtok(string, " ");
 	while (token)
 	{
-		argv[i] = token;
+		toks[i] = token;
 		token = strtok(NULL, " ");
 		i++;
 	}
-	argv[i] = NULL;
-	return (argv);
+	toks[i] = NULL;
+	return (toks);
 }

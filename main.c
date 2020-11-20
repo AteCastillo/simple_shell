@@ -10,12 +10,12 @@ int main(void)
 {
 	int i, status;
 	pid_t child_pid;
-	char **argv = NULL, *string = NULL, *str = NULL;
+	char **argv = NULL, **toks = NULL, *string = NULL, *str = NULL;
 
 	string = malloc(sizeof(char) * 512); /* memory assignations */
-	argv = malloc(sizeof(char *) * 64);
+	toks = malloc(sizeof(char *) * 64);
 	for (i = 0; i < 64; i++)
-		argv[i] = malloc(sizeof(char) * 32);
+		toks[i] = malloc(sizeof(char) * 32);
 	while (1) /* loop is broken by user input */
 	{
 		write(1, "($) ", 4);
@@ -24,7 +24,7 @@ int main(void)
 			break;
 		else if (str[0] == '\n') /* user hit return without any other input */
 			continue;
-		argv = tokenize(str, argv); /* load argv with tokens */
+		argv = tokenize(str, toks); /* load argv with tokens */
 		child_pid = fork();
 		if (child_pid == -1) /* check return of fork */
 			continue;
