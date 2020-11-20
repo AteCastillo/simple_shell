@@ -12,8 +12,8 @@
 /* environment_functions */
 void _printenv(void);
 char *_getenv(char *name);
-char **tokenize(char *string, char **toks);
-char *_getnewline(char *string, int get);
+char **tokenize(char *string);
+char *_getnewline(char *string, int ret);
 
 /* string_functions */
 int _strcmp(char *s1, char *s2);

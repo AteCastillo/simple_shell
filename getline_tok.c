@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * _getnewline - to get new line
  *
@@ -7,26 +8,23 @@
  * Return: a pointer.
  */
 
-char *_getnewline(char *string, int get)
+char *_getnewline(char *string, int ret)
 {
-/*	int get = 0;
-	size_t size = 0;
-*/	char *newline = "\n";
+	char *newline = "\n";
 	char *exit = "exit";
 	char *env = "env";
 
-/*	get = getline(&string, &size, stdin);
-*/	if (get == -1) /*if error and EOF for ctrl+d */
+	if (ret == -1) /*if error and EOF for ctrl+d */
 	{
-		if (get == EOF)
-			return (NULL);
+		if (ret == EOF)
+			return (exit);
 		perror("error");
 		return (newline);
 	}
 	if (string[0] == '\n') /*when there is only newline in the prompt*/
 		return (string);
-	get = _strlen(string); /*to remove new line at the end of the string */
-	string[get - 1] = '\0';
+	ret = _strlen(string); /*to remove new line at the end of the string */
+	string[ret - 1] = '\0';
 	if (_strcmp(string, exit) == 0) /*to compare exit and leave the shell */
 		return (NULL);
 	if (_strcmp(string, env) == 0) /*to print the enviroment variables */
@@ -46,11 +44,13 @@ char *_getnewline(char *string, int get)
   * Return: double pointer (argument vector)
   */
 
-char **tokenize(char *string, char **toks)
+char **tokenize(char *string)
 {
 	char *token = NULL;
-	int i = 0;
+	int i;
+	char **toks = NULL;
 
+	toks = malloc(sizeof(char) * 32);
 	token = strtok(string, " ");
 	while (token)
 	{
@@ -60,7 +60,6 @@ char **tokenize(char *string, char **toks)
 		i++;
 	}
 	toks[i] = NULL;
-
 	free(token);
 	return (toks);
 }

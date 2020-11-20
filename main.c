@@ -3,19 +3,16 @@
 /**
   * main - entry point
   *
-  * Return: 0 (success)
+  * Return: 0 (success), -1 otherwise
   */
 
 int main(void)
 {
 	int i, status, ret /*, fd = 0, a */;
-	size_t size = 0;
 	pid_t child_pid;
-	char **argv = NULL, **toks = NULL, *string = NULL;
+	size_t size = 0;
+	char **argv = NULL, *string = NULL;
 
-	toks = malloc(sizeof(char *) * 32); /* 512 bytes total */
-	for (i = 0; i < 32; i++)
-		toks[i] = NULL;
 	while (1) /* loop is broken by user input */
 	{
 /*		a = isatty(fd);
@@ -25,24 +22,27 @@ int main(void)
 		string = _getnewline(string, ret);
 		if (string == NULL) /* check for EOF */
 			break;
-		else if (string[0] == '\n') /* user hit return without any other input */
+		else if (string[0] == '\n') /* input is just a return */
 			continue;
-		argv = tokenize(string, toks); /* load argv with tokens */
+		argv = tokenize(string); /* load argv with tokens */
 		child_pid = fork();
 		if (child_pid == -1) /* check return of fork */
-			continue;
+			break;
 		else if (child_pid == 0) /* execute command checking for errors */
 		{
 			if (execve(argv[0], argv, NULL) == -1)
 				perror("Error");
+			free(string);
+			for (i = 0; argv[i] != NULL; i++)
+				free(argv[i]);
+			free(argv);
 			break;
 		}
 		else
 			wait(&status);
 	}
-	free(string); /* free memory */
-	for (i = 0; i < 32; i++)
-		free(toks[i]);
-	free(toks);
-	return (0);
+/*	free(string);
+	for (i = 0; argv != NULL; i++)
+		free(argv[i]);
+*/	return (0);
 }
