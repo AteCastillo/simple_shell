@@ -8,18 +8,19 @@
 
 int main(void)
 {
-	int i, status, ret;
+	int i, status, ret /*, fd = 0, a */;
 	size_t size = 0;
 	pid_t child_pid;
 	char **argv = NULL, **toks = NULL, *string = NULL;
 
-	/*string = malloc(sizeof(char) * ; memory assignations */
 	toks = malloc(sizeof(char *) * 32); /* 512 bytes total */
 	for (i = 0; i < 32; i++)
 		toks[i] = NULL;
 	while (1) /* loop is broken by user input */
 	{
-		write(1, "($) ", 4);
+/*		a = isatty(fd);
+		if (a == 1)
+*/			write(1, "($) ", 4);
 		ret = getline(&string, &size, stdin);
 		string = _getnewline(string, ret);
 		if (string == NULL) /* check for EOF */
