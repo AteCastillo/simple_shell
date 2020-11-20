@@ -10,27 +10,21 @@ int main(void)
 {
 	int i, status;
 	pid_t child_pid;
-	char **argv, *string;
-	size_t size = 0;
+	char **argv = NULL, *string = NULL, *str = NULL;
 
 	string = malloc(sizeof(char) * 512); /* memory assignations */
 	argv = malloc(sizeof(char *) * 64);
-	for (i = 0; i < 64, i++)
-		argv[i] = malloc(sizeof(char) * 64);
+	for (i = 0; i < 64; i++)
+		argv[i] = malloc(sizeof(char) * 32);
 	while (1) /* loop is broken by user input */
 	{
-		string = _get_newline(string);
-		if (string == NULL) /* check for EOF */
-		{
-			write(1, "\n", 1);
+		write(1, "($) ", 4);
+		str = _getnewline(string);
+		if (str == NULL) /* check for EOF */
 			break;
-		}
-		else if (string[0] == '\n') /* user hit return without any other input */
-		{
-			write(1, "\n", 1);
+		else if (str[0] == '\n') /* user hit return without any other input */
 			continue;
-		}
-		argv = tokenizer(string); /* load argv with tokens */
+		argv = tokenize(str, argv); /* load argv with tokens */
 		child_pid = fork();
 		if (child_pid == -1) /* check return of fork */
 			continue;

@@ -33,7 +33,7 @@ void _printenv(void)
   * Return: string with values
   */
 
-char *_getenv(const char *name)
+char *_getenv(char *name)
 {
 	extern char **environ;
 	int i;
