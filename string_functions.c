@@ -73,32 +73,25 @@ int _strncmp(char *s1, char *s2, int n)
 }
 
 /**
- * _strdup - copy string, return pointer to it
- *
- * @str: original string
- *
- * Return: pointer to duplicated string, NULL otherwise
+ * _strcpy - a function that copies the string pointed to by src
+ * @dest: var received
+ * @src: var received
+ * Return: Always 0.
  */
-/*
-char *_strdup(char *str)
+
+
+char *_strcpy(char *dest, char *src)
 {
-	int i, j;
-	char *new;
+	int n, i; /* n if for the lenght of the string, i for iteration */
 
-	if (str == NULL)
-		return (NULL);
-
-	for (i = 0; str[i] != 0; i++)
+	for (n = 0; src[n] != '\0'; n++)
 	{
 	}
 
-	new = malloc((sizeof(char) * i) + 1);
+	for (i = 0; i <= n; i++)
+	{
+		dest[i] = src[i];
+	}
+	return (dest);
 
-	if (new == NULL)
-		return (NULL);
-
-	for (j = 0; j != i; j++)
-		new[j] = str[j];
-
-	return (new);
-}*/
+}

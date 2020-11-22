@@ -12,12 +12,15 @@
 /* environment_functions */
 void _printenv(void);
 char *_getenv(char *name);
+
+/* functions to help main */
 char **tokenize(char *string);
 char *_getnewline(char *string, int ret);
+void free_memory(char **ptr);
 
 /* string_functions */
 int _strcmp(char *s1, char *s2);
 int _strncmp(char *s1, char *s2, int n);
-char *_strdup(char *str);
 int _strlen(char *s);
+char *_strcpy(char *dest, char *src)
 #endif
