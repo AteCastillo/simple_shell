@@ -48,15 +48,19 @@ char *_getnewline(char *string, int ret)
 char **tokenize(char *string)
 {
 	char *token = NULL;
-	int i = 0, j = 0;
+	int i = 0, j = 0, toklen = 0;
 	char **toks = NULL;
 
 	toks = malloc(sizeof(char *) * 32);
+
+	j = _strlen(string);
+	string[j - 1] = '\0';
+
 	token = strtok(string, " ");
-	while (token)
+	while (token != NULL)
 	{
-		j = _strlen(token);
-		toks[i] = malloc(sizeof(char) * (j + 1));
+		toklen = _strlen(token);
+		toks[i] = malloc(toklen + 1);
 		_strcpy(toks[i], token);
 		token = strtok(NULL, " ");
 		i++;

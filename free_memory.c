@@ -13,7 +13,7 @@ void free_memory(char **ptr)
 
 	for (i = 0; ptr[i] != NULL; i++)
 	{
-		free(argv[i]);
+		free(ptr[i]);
 	}
-	free(argv);
+	free(ptr);
 }
