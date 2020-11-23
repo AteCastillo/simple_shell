@@ -1,39 +1,38 @@
-.TH man she1  "November 2020" "she(1)" "she man page"
+.TH man she1  "November 2020" "version1.0" "she man page"
 
 .SH NAME
 .B she - a program that interprets commands
 
 .SH SYNOPSIS
-she [options] [file]
+she [command] [-options] [file]
 
 .SH DESCRIPTION
-she
-Shell is a GNU program or command language interpreter which takes commands from the standar imput or a from a file and executes them. The commands taken
+she - simple shell
+Shell is a GNU program or command language interpreter which takes commands from
+the standar imput or a from a file and executes them. The commands taken
 have to be in command language in order to be executed; it is an interface for
 Unix-like operating systems.
 
-she is inspired by the UNIX shell created by Ken Thompson and  was developed in Ubuntu 14.04 LTS, compiled with GCC 4.8.4.
+she is inspired by the UNIX shell created by Ken Thompson and  was developed in
+Ubuntu 14.04 LTS, compiled with GCC 4.8.4.
 
 .SH DEFINITION
 Header file: #include shell.h
 
 .SH OPTIONS
-No options available
-
-.SH OPERANDS
-
-- this hyphen has to be treated as the first operand, if more that one hyphen
-or other operands placed before it the results will be indefined.
-argument
+[env] - print the environment variables
+[exit] - exists she
 
 .SH INVOCATION
 In interactive mode the shell will be called by:
+
 ./she
 ($)
 
 A prompt ($)  will appear after the call.
 
 In a noninteractive mode the shell can be piped:
+
 ./she
 ($) echo "/bin/ls" | ./she
 
