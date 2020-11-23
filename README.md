@@ -38,6 +38,7 @@ Exit the program by typing "exit" and hitting return, or by pressing Ctrl + D.
 - main.c
 
 - string_funtions.c
+
   contains functions to work with strings:
   - _strlen - to get the length of a string
   - _strcmp - to compare two strings

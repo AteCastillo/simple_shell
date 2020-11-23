@@ -7,6 +7,7 @@
 she [command] [-options] [file]
 
 .SH DESCRIPTION
+
 she - simple shell
 Shell is a GNU program or command language interpreter which takes commands from
 the standar imput or a from a file and executes them. The commands taken
