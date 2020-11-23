@@ -20,8 +20,8 @@ void _printenv(void)
 		for (j = 0; environ[i][j] != 0; j++)
 		{
 		}
-	write(1, environ[i], j);
-	write(1, "\n", 1);
+		write(1, environ[i], j);
+		write(1, "\n", 1);
 	}
 }
 
@@ -51,4 +51,38 @@ char *_getenv(char *name)
 		}
 	}
 	return (NULL);
+}
+
+/**
+  * findcom - find command in the path
+  *
+  * @value: value of variable PATH
+  * @string: string to check
+  *
+  * Return: path of command, original string (first token) if not found
+  */
+
+char *findcom(char *string)
+{
+	char *value = NULL; /* path */
+	char *thingie = "/", *stok = NULL, *ptok = NULL, *find = NULL;
+	struct stat buf;
+
+	find = malloc(1024);
+	value = _getenv("PATH");
+	stok = strtok(string, " "); /* we only need 1st token */
+	if (stat(stok, &buf) == 0)
+		return (stok);
+
+	ptok = strtok(value, ":");
+	while (ptok != NULL)
+	{
+		find = strcat(find, ptok);
+		find = strcat(find, thingie);
+		find = strcat(find, stok);
+		if (stat(find, &buf) == 0)
+			return (find);
+		ptok = strtok(NULL, ":");
+	}
+	return (stok);
 }

@@ -9,20 +9,27 @@
 #include <stdio.h>
 #include <string.h>
 
-/* environment_functions */
+/* environment_functions file */
 void _printenv(void);
 char *_getenv(char *name);
+char *findcom(char *string); /* find command */
 
 /* functions to help main */
+	/* getline file */
 char **tokenize(char *string);
-int _getnewline(char *string, int ret);
+int _getnewline(char *string, int ret, int at);
+	/* fork file */
 void forkenize(char **argv, char *string);
-void _prompt(void);
+	/* main file */
+int _prompt(void);
+	/* free file */
 void free_memory(char **ptr);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
-/* string_functions */
+/* string_functions file */
 int _strcmp(char *s1, char *s2);
 int _strncmp(char *s1, char *s2, int n);
 int _strlen(char *s);
+char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 #endif

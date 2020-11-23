@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * _getnewline - check new line and return exit code
  *
@@ -9,13 +8,15 @@
  * Return: exit code
  */
 
-int _getnewline(char *string, int ret)
+int _getnewline(char *string, int ret, int at)
 {
 	if (ret == -1) /* if error and EOF for ctrl+d */
 	{
 		if (ret == EOF)
 		{
 			free(string);
+			if (at == 1)
+				write(1, "\n", 1);
 			return (0); /* exit with no errors */
 		}
 		perror("Error");
@@ -52,12 +53,15 @@ int _getnewline(char *string, int ret)
 
 char **tokenize(char *string)
 {
-	char *token = NULL;
-	int i = 0, j = 0, toklen = 0;
+	char *token = NULL; /*, *fpath = NULL;*/
+	unsigned int i = 0, j = 0, toklen = 0, k = 0;
 	char **toks = NULL;
 
-	toks = malloc(sizeof(char *) * 32);
+	k = _strlen(string);
+	toks = malloc(k * sizeof(char *));
 
+/*	fpath = findcom(string);
+*/
 	j = _strlen(string);
 	string[j - 1] = '\0';
 

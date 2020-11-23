@@ -8,16 +8,16 @@
 
 int main(void)
 {
-	int ret, x; /*ret for return from getline*/
+	int ret, x, at; /*ret: getline, x: getnewline, at: isatty*/
 	size_t size = 0;
 	char **argv = NULL, *string;
 
 	while (1) /* loop is broken by user input */
 	{
 		string = NULL;
-		_prompt();
+		at = _prompt();
 		ret = getline(&string, &size, stdin);
-		x = _getnewline(string, ret);
+		x = _getnewline(string, ret, at);
 		if (x == 0) /* exit with no errors */
 			return (0);
 		else if (x == -1) /* exit with error code -1 */
@@ -35,8 +35,12 @@ int main(void)
  * Return: nothing
  */
 
-void _prompt(void)
+int _prompt(void)
 {
 	if (isatty(STDIN_FILENO))
+	{
 		write(1, "($) ", 4);
+		return (1);
+	}
+	return (0);
 }

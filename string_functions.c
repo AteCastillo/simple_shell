@@ -74,9 +74,9 @@ int _strncmp(char *s1, char *s2, int n)
 
 /**
  * _strcpy - a function that copies the string pointed to by src
- * @dest: var received
- * @src: var received
- * Return: Always 0.
+ * @dest: new string
+ * @src: original string
+ * Return: pointer to new string.
  */
 
 
@@ -94,4 +94,33 @@ char *_strcpy(char *dest, char *src)
 	}
 	return (dest);
 
+}
+
+/**
+ * _strcat - concatenate two strings
+ *
+ * @src: parameter
+ * @dest: parameter
+ *
+ * Return: pointer to dest
+ */
+
+char *_strcat(char *dest, char *src)
+{
+	int count;
+	int temp;
+
+
+	for (count = 0; dest[count] != '\0'; count++)
+	{
+	}
+
+	for (temp = 0; src[temp] != '\0'; count++, temp++)
+	{
+		dest[count] = src[temp];
+	}
+
+	dest[count] = '\0';
+
+	return (dest);
 }
