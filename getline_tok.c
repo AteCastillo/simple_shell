@@ -1,40 +1,45 @@
 #include "shell.h"
 
-/*
- * _getnewline - to get new line
+/**
+ * _getnewline - check new line and return exit code
  *
- * @string: allocated buffer
+ * @string: received string
+ * @ret: return of getline function
  *
- * Return: a pointer.
- *
+ * Return: exit code
+ */
 
-char *_getnewline(char *string, int ret)
+int _getnewline(char *string, int ret)
 {
-	char *newline = "\n";
-	char *exit = "exit";
-	char *env = "env";
-
-	if (ret == -1) if error and EOF for ctrl+d
+	if (ret == -1) /* if error and EOF for ctrl+d */
 	{
 		if (ret == EOF)
-			return (exit);
-		perror("error");
-		return (newline);
+		{
+			free(string);
+			return (0); /* exit with no errors */
+		}
+		perror("Error");
+		free(string);
+		return (-1); /* exit with error */
 	}
-	if (string[0] == '\n') when there is only newline in the prompt
-		return (string);
-	ret = _strlen(string); to remove new line at the end of the string
-	string[ret - 1] = '\0';
-	if (_strcmp(string, exit) == 0) to compare exit and leave the shell
-		return (NULL);
-	if (_strcmp(string, env) == 0) to print the enviroment variables
+	if (string[0] == '\n')
 	{
-		_printenv();
-		return (newline);
+		free(string);
+		return (3); /* loop again */
 	}
-	return (string);
+	if (_strcmp(string, "exit\n") == 0)
+	{
+		free(string);
+		return (0); /* exit with no errors */
+	}
+	if (_strcmp(string, "env\n") == 0)
+	{
+		free(string);
+		_printenv();
+		return (3); /* loop again */
+	}
+	return (1); /* execute string */
 }
-*/
 
 /**
   * tokenize - load argv with string tokens

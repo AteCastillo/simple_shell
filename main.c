@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	int ret; /*ret for return from getline*/
+	int ret, x; /*ret for return from getline*/
 	size_t size = 0;
 	char **argv = NULL, *string;
 
@@ -17,6 +17,13 @@ int main(void)
 		string = NULL;
 		_prompt();
 		ret = getline(&string, &size, stdin);
+		x = _getnewline(string, ret);
+		if (x == 0) /* exit with no errors */
+			return (0);
+		else if (x == -1) /* exit with error code -1 */
+			return (-1);
+		else if (x == 3) /* loop again */
+			continue;
 		argv = tokenize(string); /* load argv with tokens */
 		forkenize(argv, string);
 	}
