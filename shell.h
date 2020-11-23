@@ -15,7 +15,8 @@ char *_getenv(char *name);
 
 /* functions to help main */
 char **tokenize(char *string);
-char *_getnewline(char *string, int ret);
+int _getnewline(char *string, int ret);
+void forkenize(char **argv, char *string);
 void _prompt(void);
 void free_memory(char **ptr);
 
