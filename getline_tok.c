@@ -60,8 +60,6 @@ char **tokenize(char *string)
 	k = _strlen(string);
 	toks = malloc(k * sizeof(char *));
 
-/*	fpath = findcom(string);
-*/
 	j = _strlen(string);
 	string[j - 1] = '\0';
 

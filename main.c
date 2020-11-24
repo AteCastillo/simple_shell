@@ -25,6 +25,7 @@ int main(void)
 		else if (x == 3) /* loop again */
 			continue;
 		argv = tokenize(string); /* load argv with tokens */
+		argv[0] = findcom(argv[0]);
 		forkenize(argv, string);
 	}
 	return (0);
