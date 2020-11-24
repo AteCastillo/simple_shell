@@ -63,7 +63,6 @@ char *_getenv(char *name)
 /**
   * findcom - find command in the path
   *
-  * @value: value of variable PATH
   * @string: string to check
   *
   * Return: path of command, original string (first token) if not found
@@ -99,7 +98,8 @@ char *findcom(char *string)
 		}
 		ptok = strtok(NULL, ":");
 	}
+	free(stok);
 	free(find);
 	free(value);
-	return (stok);
+	return (NULL);
 }
