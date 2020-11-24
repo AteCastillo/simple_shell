@@ -20,7 +20,20 @@ commands with arguments.
 ($) ls -l
 
 ```
-Exit the program by typing "exit" and hitting return, or by pressing Ctrl + D.
+## Exit
+By typing "exit" and hitting return, or by pressing Ctrl + D.
+For the shell's purposes, a command which exits with a zero exit status has
+ succeeded. An exit status of zero indicates success.  A non-zero exit status
+ indicates  failure.
+ When  a  command  terminates  on a fatal signal N, bash uses the value of 128+N
+ as the exit status.
+ If a command is not found, the child process created to execute it returns a
+ status of 127.  If a command is found but is not executable, the return status
+ is 126. If  a command fails because of an error during expansion or
+ redirection, the exit status is greater than zero.
+ Shell builtin commands return a status of 0 (true) if successful, and non-zero
+ (false) if  an  error  occurs  while they execute.  All builtins return an exit
+ status of 2 to indicate incorrect usage
 
 **Shell** can be invoked both interactively and non-interactively.
 If it is invoked with standard input not connected to a terminal, it reads and
@@ -32,21 +45,21 @@ Example:
 hello world
 ($)
 ```
-If it is invoked with standard input connected to a terminal (using [isatty),
+If it is invoked with standard input connected to a terminal (using [isatty]),
 an *interactive* shell is opened. When executing interactively, **shell**
  displays the prompt `($) ` when it is ready to read a command.
 
 Example:
 ```
-$./hsh
-$
+($)./hsh
+($)
 ```
-### Environment:
+## Environment:
 **shell** receives and copies the environment of the parent process in which
 it was executed. This environment is an array of *name-value* strings
  describing variables in the format *NAME=VALUE*.
 
-### Command Execution:
+## Command Execution:
 
 When **shell** receives a command -which is a string-, this is tokenized
  into smaller strings using a space as a delimiter. The first string works as
