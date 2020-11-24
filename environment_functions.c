@@ -36,18 +36,25 @@ void _printenv(void)
 char *_getenv(char *name)
 {
 	extern char **environ;
-	int i;
-	size_t j;
+	int i; /* i loops environ */
+	unsigned int j; /* j is length of string */
+	unsigned int k; /* k loops to copy */
+	size_t x; /* x counts chars up to = */
+	char *copy;
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		for (j = 0; environ[i][j] != '='; j++)
+		for (x = 0; environ[i][x] != '='; x++)
 		{
 		}
-		if (_strncmp(name, environ[i], j) == 0)
+
+		if (_strncmp(environ[i], name, x) == 0)
 		{
-			strtok(environ[i], "=");
-			return (strtok(NULL, "="));
+			j = _strlen(environ[i]);
+			copy = malloc(j + 1);
+			for (k = 0; (k + x) <= j; k++)
+				copy[k] = environ[i][x + k];
+			return (copy);
 		}
 	}
 	return (NULL);
@@ -87,10 +94,12 @@ char *findcom(char *string)
 		if (check == 0)
 		{
 			free(stok);
+			free(value);
 			return (find);
 		}
 		ptok = strtok(NULL, ":");
 	}
 	free(find);
+	free(value);
 	return (stok);
 }
