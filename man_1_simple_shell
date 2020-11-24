@@ -1,51 +1,64 @@
-.TH man she1  "November 2020" "version1.0" "she man page"
+.TH man simple shell1  "November 2020" "version1.0" "man page"
 
 .SH NAME
-.B she - a program that interprets commands
+.B shell - a program that interprets commands
 
 .SH SYNOPSIS
-she [command] [-options] [file]
+shell [command] [-options] [file]
 
 .SH DESCRIPTION
 
-she - simple shell
-Shell is a GNU program or command language interpreter which takes commands from
-the standar imput or a from a file and executes them. The commands taken
+Simple shell
+Shell is a GNU program or command language interpreter which takes commands
+ from the standar imput or a from a file and executes them. The commands taken
 have to be in command language in order to be executed; it is an interface for
 Unix-like operating systems.
 
-she is inspired by the UNIX shell created by Ken Thompson and  was developed in
-Ubuntu 14.04 LTS, compiled with GCC 4.8.4.
+This shell is inspired by the UNIX shell created by Ken Thompson and  was
+ developed in Ubuntu 14.04 LTS, compiled with GCC 4.8.4.
 
 .SH DEFINITION
 Header file: #include shell.h
 
 .SH OPTIONS
 [env] - print the environment variables
-[exit] - exists she
+[exit] - exists shell
 
 .SH INVOCATION
 In interactive mode the shell will be called by:
 
-./she
+./hsh
 ($)
 
 A prompt ($)  will appear after the call.
 
 In a noninteractive mode the shell can be piped:
 
-./she
-($) echo "/bin/ls" | ./she
+./hsh
+($) echo "/bin/ls" | ./hsh
 
 .SH RETURN
  (0) on success
  (-1) on failure
 
-.SH EXAMPLE
+.SH EXIT
+input "exit" or ctrl+d and leaves th shell.
 
+.SH EXAMPLE
+To list files and directories in long format:
+($) ls -l
+-rw-rw-r-- 1 vagrant vagrant   883 Nov 20 17:01 environment_functions.c
+-rw-rw-r-- 1 vagrant vagrant   572 Nov 23 01:04 fork.c
+-rw-rw-r-- 1 vagrant vagrant   227 Nov 23 00:24 free_memory.c
+-rw-rw-r-- 1 vagrant vagrant  1307 Nov 23 16:37 getline_tok.c
+-rw-rw-r-- 1 vagrant vagrant   763 Nov 23 16:37 main.c
+-rw-rw-r-- 1 vagrant vagrant  1194 Nov 24 13:21 man_1_simple_shell
+-rw-rw-r-- 1 vagrant vagrant  3877 Nov 23 21:49 README.md
+-rw-rw-r-- 1 vagrant vagrant   616 Nov 23 01:07 shell.h
+-rw-rw-r-- 1 vagrant vagrant  1336 Nov 22 21:38 string_functions.c
 
 .SH SEE ALSO
-sh
+sh / shell / bash
 
 .SH BUGS
 No known bugs.
