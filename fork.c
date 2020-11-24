@@ -22,10 +22,13 @@ void forkenize(char **argv, char *string)
 	if (child_pid == 0) /* execute command checking for errors */
 	{
 		if (execve(argv[0], argv, NULL) == -1)
-			perror("Error");
+		{
+			perror(argv[0]);
+			exit(126);
+		}
 		free(string);
 		free_memory(argv);
-		exit (9);
+		exit(9);
 	}
 	else
 		wait(&status);
