@@ -67,22 +67,30 @@ char *findcom(char *string)
 	char *value = NULL; /* path */
 	char *thingie = "/", *stok = NULL, *ptok = NULL, *find = NULL;
 	struct stat buf;
+	int check;
 
 	find = malloc(1024);
 	value = _getenv("PATH");
 	stok = strtok(string, " "); /* we only need 1st token */
-	if (stat(stok, &buf) == 0)
+
+	check = stat(stok, &buf);
+	if (check == 0)
 		return (stok);
 
 	ptok = strtok(value, ":");
 	while (ptok != NULL)
 	{
-		find = strcat(find, ptok);
+		find = _strcpy(find, ptok);
 		find = strcat(find, thingie);
 		find = strcat(find, stok);
-		if (stat(find, &buf) == 0)
+		check = stat(find, &buf);
+		if (check == 0)
+		{
+			free(stok);
 			return (find);
+		}
 		ptok = strtok(NULL, ":");
 	}
+	free(find);
 	return (stok);
 }
