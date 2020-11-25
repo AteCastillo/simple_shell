@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://imgur.com/RFMr490>
+  <img src="https://i.imgur.com/RFMr490.jpeg">
 </p>
 
 # Simple Shell
