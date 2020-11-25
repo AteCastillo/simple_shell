@@ -33,7 +33,7 @@ int _getnewline(char *string, int ret, int at)
 		free(string);
 		return (3); /* loop again */
 	}
-	if (_strcmp(string, "exit\n") == 0)
+	if (_strncmp(string, "exit", 4) == 0)
 	{
 		free(string);
 		return (0); /* exit with no errors */
