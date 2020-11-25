@@ -21,23 +21,27 @@ commands with arguments.
 
 ```
 ## Exit
+
 By typing "exit" and hitting return, or by pressing Ctrl + D.
-For the shell's purposes, a command which exits with a zero exit status has
- succeeded. An exit status of zero indicates success.  A non-zero exit status
- indicates  failure.
- When  a  command  terminates  on a fatal signal N, bash uses the value of 128+N
- as the exit status.
- If a command is not found, the child process created to execute it returns a
- status of 127.  If a command is found but is not executable, the return status
- is 126. If  a command fails because of an error during expansion or
- redirection, the exit status is greater than zero.
- Shell builtin commands return a status of 0 (true) if successful, and non-zero
- (false) if  an  error  occurs  while they execute.  All builtins return an exit
- status of 2 to indicate incorrect usage
+Exit options:
+- For the shell's purposes, a command which exits with a zero exit status has
+ succeeded. A non-zero exit status indicates  failure.
+-  When  a  command  terminates  on a fatal signal N, bash uses the value of
+ 128+N  as the exit status.
+-  If a command is not found, the child process created to execute it returns a
+ status of 127.
+- If a command is found but is not executable, the return status is 126.
+- If  a command fails because of an error during expansion or redirection,
+ the exit status is greater than zero.
+- Shell builtin commands return a status of 0 (true) if successful, and
+ non-zero (false) if  an  error  occurs  while they execute.  All builtins
+ return an exit status of 2 to indicate incorrect usage.
+
+## Mode
 
 **Shell** can be invoked both interactively and non-interactively.
-If it is invoked with standard input not connected to a terminal, it reads and
- executes received commands in order.
+- If it is invoked with standard input not connected to a terminal, it reads
+ and executes received commands in order.
 
 Example:
 ```
@@ -45,15 +49,16 @@ Example:
 hello world
 ($)
 ```
-If it is invoked with standard input connected to a terminal (using [isatty]),
-an *interactive* shell is opened. When executing interactively, **shell**
- displays the prompt `($) ` when it is ready to read a command.
+- If it is invoked with standard input connected to a terminal (using
+ [isatty]), an *interactive* shell is opened. When executing interactively,
+ **shell** displays the prompt `($) ` when it is ready to read a command.
 
 Example:
 ```
 ($)./hsh
 ($)
 ```
+
 ## Environment:
 **shell** receives and copies the environment of the parent process in which
 it was executed. This environment is an array of *name-value* strings
@@ -89,24 +94,34 @@ the shell searches for it in the list of shell builtins. If a builtin
 - shell.h:
   header file.
 
+- main.c:
+  - _prompt - to print the prompt ($)
+  - main - entry point to the shell.
+
 - string_funtions.c: contains functions to work with strings:
-  - _strlen - to get the length of a string
-  - _strcmp - to compare two strings
-  - _strncmp - to compare two strings with a certain number of bytes
-  - _strcpy - to copy a string contained in a variable into another variable
+  - _strlen - to get the length of a string.
+  - _strcmp - to compare two strings.
+  - _strncmp - to compare two strings with a certain number of bytes.
+  - _strcpy - to copy a string contained in a variable into another variable.
+  - _strcat - to concatenate strings.
 
 - getline_tok.c
-  - _getnewline - to check EOF, new line, exit and env
-  - _getnewline - allocates tokens and tokenize the string given as imput.
+  - _getnewline - to check EOF, new line, exit and env.
+  - _tokenize - allocates tokens and tokenize the string given as imput.
+  - check - to check for special characters and spaces.
 
 - fork.c
   - forkenize - to fork the parent program into child.
 
 - environment_functions.c: functions to work with environment variables:
-  - _printenv - to print the current environment
-  - _getenv - to get the value of the environment variable
+  - _printenv - to print the current environment.
+  - _getenv - to get the value of the environment variable.
+  - findcom - to search a command in the PATH environment variable.
 
-- free_memory.c: a function to free all argument allocations.
+- free_memory.c
+  - free_memory: a function to free all argument allocations.
+  - _realloc: a function to reallocate memory.
+
 
 ## Bugs
 
@@ -121,3 +136,4 @@ This program was written by:
 - Micaela Percovich
 
 As part of the foundations programme of Holberton School.
+November, 2020.

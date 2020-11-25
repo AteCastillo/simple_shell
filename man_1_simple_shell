@@ -9,63 +9,65 @@ shell [command] [-options] [file]
 .SH DESCRIPTION
 
 Simple shell
-Shell is a GNU program or command language interpreter which takes commands
- from the standar imput or a from a file and executes them. The commands taken
+Shell is a GNU program or command language interpreter which takes commands from the standar imput or a from a file and executes them. The commands taken
 have to be in command language in order to be executed; it is an interface for
 Unix-like operating systems.
-
-This shell is inspired by the UNIX shell created by Ken Thompson and  was
- developed in Ubuntu 14.04 LTS, compiled with GCC 4.8.4.
+This shell is inspired by the UNIX shell created by Ken Thompson and  was developed in Ubuntu 14.04 LTS, compiled with GCC 4.8.4.
 
 .SH DEFINITION
 Header file: #include shell.h
 
-.SH OPTIONS
+.SH Options (built-ins)
 [env] - print the environment variables
 [exit] - exists shell
 
-.SH INVOCATION
+.SH Invocation
 In interactive mode the shell will be called by:
-
-./hsh
-($)
+.br
+ ./hsh
+.br
+ ($)
 
 A prompt ($)  will appear after the call.
 
 In a noninteractive mode the shell can be piped:
+.br
+ ./hsh
+.br
+ ($) echo "/bin/ls" | ./hsh
 
-./hsh
-($) echo "/bin/ls" | ./hsh
+.SH ENVIROMENT
+PATH environment variable contains all directories where commands are located.
 
 .SH RETURN
  (0), (1), (2) or (3) on success
  (-1) on failure
 
 .SH EXIT
-input "exit" or ctrl+d and leaves th shell.
+Input "exit" or ctrl+d and leaves th shell.
 
 .SH EXAMPLE
 To list files and directories in long format:
 
 ($) ls -l
-
--rw-rw-r-- 1 vagrant vagrant   883 Nov 20 17:01 environment_functions.c
-
--rw-rw-r-- 1 vagrant vagrant   572 Nov 23 01:04 fork.c
-
--rw-rw-r-- 1 vagrant vagrant   227 Nov 23 00:24 free_memory.c
-
--rw-rw-r-- 1 vagrant vagrant  1307 Nov 23 16:37 getline_tok.c
-
--rw-rw-r-- 1 vagrant vagrant   763 Nov 23 16:37 main.c
-
--rw-rw-r-- 1 vagrant vagrant  1194 Nov 24 13:21 man_1_simple_shell
-
--rw-rw-r-- 1 vagrant vagrant  3877 Nov 23 21:49 README.md
-
--rw-rw-r-- 1 vagrant vagrant   616 Nov 23 01:07 shell.h
-
--rw-rw-r-- 1 vagrant vagrant  1336 Nov 22 21:38 string_functions.c
+.br
+	-rw-rw-r-- 1 vagrant vagrant  883 Nov 20 17:01 environment_functions.c
+.br
+	-rw-rw-r-- 1 vagrant vagrant   572 Nov 23 01:04 fork.c
+.br
+	-rw-rw-r-- 1 vagrant vagrant   227 Nov 23 00:24 free_memory.c
+.br
+	-rw-rw-r-- 1 vagrant vagrant  1307 Nov 23 16:37 getline_tok.c
+.br
+	-rw-rw-r-- 1 vagrant vagrant   763 Nov 23 16:37 main.c
+.br
+	-rw-rw-r-- 1 vagrant vagrant  1194 Nov 24 13:21 man_1_simple_shell
+.br
+	-rw-rw-r-- 1 vagrant vagrant  3877 Nov 23 21:49 README.md
+.br
+	-rw-rw-r-- 1 vagrant vagrant   616 Nov 23 01:07 shell.h
+.br
+	-rw-rw-r-- 1 vagrant vagrant  1336 Nov 22 21:38 string_functions.c
 
 .SH SEE ALSO
 sh / shell / bash
