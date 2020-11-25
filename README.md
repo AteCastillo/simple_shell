@@ -158,7 +158,7 @@ This program was written by:
 As part of the foundations programme of Holberton School.
 November, 2020.
 
-Check our blog [here] (https://2235.medium.com/she-ll-b84052490ec7/).
+Check our blog post [here](https://2235.medium.com/she-ll-b84052490ec7).
 
 <p align="center">
   <img src="http://www.holbertonschool.com/holberton-logo.png" alt="Holberton School logo">
