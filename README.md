@@ -2,9 +2,11 @@
   <img src="https://i.imgur.com/RFMr490.jpeg">
 </p>
 
-# Simple Shell
+# She - Shells are usually perceived as feminine; a symbol of birth, good fortune, and resurrection.
 
-This is a simple UNIX command interpreter.
+# She
+
+This is a simple UNIX command language interpreter.
 
 ## Compilation
 
@@ -13,6 +15,19 @@ All files in this repository should be compiled in the following way:
 ```bash
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
+
+## Project requirements.
+
+- Allowed editors: vi, vim, emacs.
+- All files will be compiled on Ubuntu 14.04 LTS.
+- Your C programs and functions will be compiled with gcc 4.8.4 using the flags -Wall -Werror -Wextra and -pedantic.
+- All your files should end with a new line.
+- A README.md file, at the root of the folder of the project is mandatory.
+- Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl.
+- Your shell should not have any memory leaks.
+- No more than 5 functions per file.
+- All your header files should be include guarded.
+- Use system calls only when you need to.
 
 ## Usage
 
@@ -28,7 +43,7 @@ commands with arguments.
 
 By typing "exit" and hitting return, or by pressing Ctrl + D.
 Exit options:
-- For the shell's purposes, a command which exits with a zero exit status has
+- For the **she** purposes, a command which exits with a zero exit status has
  succeeded. A non-zero exit status indicates  failure.
 -  When  a  command  terminates  on a fatal signal N, bash uses the value of
  128+N  as the exit status.
@@ -37,13 +52,13 @@ Exit options:
 - If a command is found but is not executable, the return status is 126.
 - If  a command fails because of an error during expansion or redirection,
  the exit status is greater than zero.
-- Shell builtin commands return a status of 0 (true) if successful, and
+- **she** builtin commands return a status of 0 (true) if successful, and
  non-zero (false) if  an  error  occurs  while they execute.  All builtins
  return an exit status of 2 to indicate incorrect usage.
 
 ## Mode
 
-**Shell** can be invoked both interactively and non-interactively.
+**she** can be invoked both interactively and non-interactively.
 - If it is invoked with standard input not connected to a terminal, it reads
  and executes received commands in order.
 
@@ -54,8 +69,8 @@ hello world
 ($)
 ```
 - If it is invoked with standard input connected to a terminal (using
- [isatty]), an *interactive* shell is opened. When executing interactively,
- **shell** displays the prompt `($) ` when it is ready to read a command.
+ [isatty]), an *interactive* **she** is opened. When executing interactively,
+ **she** displays the prompt `($) ` when it is ready to read a command.
 
 Example:
 ```
@@ -64,24 +79,24 @@ Example:
 ```
 
 ## Environment:
-**shell** receives and copies the environment of the parent process in which
+**she** receives and copies the environment of the parent process in which
 it was executed. This environment is an array of *name-value* strings
  describing variables in the format *NAME=VALUE*.
 
 ## Command Execution:
 
-When **shell** receives a command -which is a string-, this is tokenized
+When **she** receives a command -which is a string-, this is tokenized
  into smaller strings using a space as a delimiter. The first string works as
  the command and all remaining strings are considered arguments to that
- command; **shell** then procceds with a succession of actions:
+ command; **she** then procceds with a succession of actions:
 - If the first character of the command is neither a backslash nor a period,
-the shell searches for it in the list of shell builtins. If a builtin
+the **she** searches for it in the list of **she** builtins. If a builtin
  with that name exists, the builtin is invoked.
 - If the first character of the command is neither a backslash nor a period
- builtin, **shell** searches each element of the **PATH** environmental
+ builtin, **she** searches each element of the **PATH** environmental
  variable for a directory containing an executable file by that name.
 - When the first character of the command is a backslash or a period, the
- shell executes the program with any remaining given arguments in a separate
+ **she** executes the program with any remaining given arguments in a separate
  execution environment.
 
 ## Features
@@ -100,7 +115,7 @@ the shell searches for it in the list of shell builtins. If a builtin
 
 - main.c:
   - _prompt - to print the prompt ($)
-  - main - entry point to the shell.
+  - main - entry point to the she.
 
 - string_funtions.c: contains functions to work with strings:
   - _strlen - to get the length of a string.
@@ -126,7 +141,6 @@ the shell searches for it in the list of shell builtins. If a builtin
   - free_memory: a function to free all argument allocations.
   - _realloc: a function to reallocate memory.
 
-
 ## Bugs
 
  Not known yet
@@ -141,6 +155,9 @@ This program was written by:
 
 As part of the foundations programme of Holberton School.
 November, 2020.
+
+Check our blog [here] (https://2235.medium.com/she-ll-b84052490ec7).
+
 <p align="center">
   <img src="http://www.holbertonschool.com/holberton-logo.png" alt="Holberton School logo">
 </p>
