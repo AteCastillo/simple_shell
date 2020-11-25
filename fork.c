@@ -8,45 +8,45 @@
  * Return: nothing
  */
 
-int forkenize(char **argv, char *string)
+int forkenize(char **argv, char *string, char *she)
 
 {
 	pid_t child_pid;
-	int status, x = 0;
-	char *error = NULL;
+	int status;
 
 	if (argv[0] == NULL)
 	{
-		error = strtok(string, " ");
-		perror(error);
+		perror(she);
 		free(string);
 		free_memory(argv);
 		return (127);
 	}
-	child_pid = fork();
-	if (child_pid == -1) /* check return of fork */
+	else
 	{
-		perror("Error");
-		return (126);
-	}
-	if (child_pid == 0) /* execute command checking for errors */
-	{
-		x = execve(argv[0], argv, NULL);
-		if (x == -1)
+		(void)she;
+		child_pid = fork();
+		if (child_pid == -1) /* check return of fork */
 		{
-			perror(argv[0]);
+			perror("Error");
+			return (126);
+		}
+		if (child_pid == 0) /* execute command checking for errors */
+		{
+			if (execve(argv[0], argv, NULL) == -1)
+			{
+				perror(she);
+				free(string);
+				free_memory(argv);
+				exit(126);
+			}
+			free(string);
+			free_memory(argv);
 			exit(126);
 		}
-		free(string);
-		free_memory(argv);
-		exit(0);
+		else
+			wait(&status);
 	}
-	else
-		wait(&status);
-
 	free(string);
 	free_memory(argv);
-	if (errno != 0)
-		return (errno);
 	return (0);
 }
