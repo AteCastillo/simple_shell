@@ -32,6 +32,6 @@ int _strncmp(char *s1, char *s2, int n);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
-extern char **environ
+extern char **environ;
 
 #endif
