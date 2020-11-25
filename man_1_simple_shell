@@ -38,7 +38,7 @@ In a noninteractive mode the shell can be piped:
 ($) echo "/bin/ls" | ./hsh
 
 .SH RETURN
- (0) on success
+ (0), (1), (2) or (3) on success
  (-1) on failure
 
 .SH EXIT
@@ -46,15 +46,25 @@ input "exit" or ctrl+d and leaves th shell.
 
 .SH EXAMPLE
 To list files and directories in long format:
+
 ($) ls -l
+
 -rw-rw-r-- 1 vagrant vagrant   883 Nov 20 17:01 environment_functions.c
+
 -rw-rw-r-- 1 vagrant vagrant   572 Nov 23 01:04 fork.c
+
 -rw-rw-r-- 1 vagrant vagrant   227 Nov 23 00:24 free_memory.c
+
 -rw-rw-r-- 1 vagrant vagrant  1307 Nov 23 16:37 getline_tok.c
+
 -rw-rw-r-- 1 vagrant vagrant   763 Nov 23 16:37 main.c
+
 -rw-rw-r-- 1 vagrant vagrant  1194 Nov 24 13:21 man_1_simple_shell
+
 -rw-rw-r-- 1 vagrant vagrant  3877 Nov 23 21:49 README.md
+
 -rw-rw-r-- 1 vagrant vagrant   616 Nov 23 01:07 shell.h
+
 -rw-rw-r-- 1 vagrant vagrant  1336 Nov 22 21:38 string_functions.c
 
 .SH SEE ALSO

@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	int ret = 0, x = 0, at = 0; /*ret: getline, x: getnewline, at: isatty, y: fork*/
+	int ret = 0, x = 0, at = 0; /*ret:getlin, x:getnewl, at:isatty, y:fork*/
 	size_t size = 0;
 	char **argv = NULL, *string;
 

@@ -10,7 +10,7 @@
 
 void _printenv(void)
 {
-	extern char **environ;
+
 	int i;
 	size_t j;
 
@@ -35,7 +35,7 @@ void _printenv(void)
 
 char *_getenv(char *name)
 {
-	extern char **environ;
+
 	int i; /* i loops environ */
 	unsigned int j; /* j is length of string */
 	unsigned int k; /* k loops to copy */
