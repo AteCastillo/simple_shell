@@ -23,6 +23,11 @@ int _getnewline(char *string, int ret, int at)
 		free(string);
 		return (-1); /* exit with error */
 	}
+	if (check(string) == 0)
+	{
+		free(string);
+		return (3);
+	}
 	if (string[0] == '\n')
 	{
 		free(string);
@@ -73,4 +78,33 @@ char **tokenize(char *string)
 	}
 	toks[i] = NULL;
 	return (toks);
+}
+
+/**
+  * check - check if string has readable characters
+  *
+  * @string: input to check
+  *
+  * Return: string if valid, NULL otherwise
+  */
+
+int check(char *string)
+{
+	int x, y = 0;
+
+	for (x = 0; string[x] != 0; x++)
+	{
+		if (string[x] >= 34 && string[x] <= 125 &&
+			string[x] != '.' && string[x] != '"' &&
+			string[x] != '(' && string[x] != ')' &&
+			string[x] != '&' && string[x] != '^' &&
+			string[x] != 39 && string[x] != '>' &&
+			string[x] != '<' && string[x] != '{' &&
+			string[x] != '}' && string[x] != '[' &&
+			string[x] != '/' && string[x] != '\\' &&
+			string[x] != '|' && string[x] != '`' &&
+			string[x] != ';')
+			y++;
+	}
+	return (y);
 }

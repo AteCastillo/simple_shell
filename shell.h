@@ -18,6 +18,7 @@ char *findcom(char *string);
 	/* getline file */
 char **tokenize(char *string);
 int _getnewline(char *string, int ret, int at);
+int check(char *string);
 	/* fork file */
 int forkenize(char **argv, char *string);
 	/* main file */
@@ -32,6 +33,7 @@ int _strncmp(char *s1, char *s2, int n);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
+
 extern char **environ;
 
 #endif

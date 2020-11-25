@@ -37,7 +37,7 @@ int forkenize(char **argv, char *string)
 		}
 		free(string);
 		free_memory(argv);
-		exit(0);
+		_exit(0);
 	}
 	else
 		wait(&status);
