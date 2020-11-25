@@ -1,4 +1,4 @@
-#include "shell.h"
+B#include "shell.h"
 /**
  * _getnewline - check new line and return exit code
  *
@@ -8,7 +8,7 @@
  * Return: exit code
  */
 
-int _getnewline(char *string, int ret, int at, char *she)
+int _getnewline(char *string, int ret, int at)
 {
 	if (ret == -1) /* if error and EOF for ctrl+d */
 	{
@@ -19,7 +19,7 @@ int _getnewline(char *string, int ret, int at, char *she)
 				write(1, "\n", 1);
 			return (0); /* exit with no errors */
 		}
-		perror(she);
+		perror("Error");
 		free(string);
 		return (-1); /* exit with error */
 	}
@@ -44,7 +44,6 @@ int _getnewline(char *string, int ret, int at, char *she)
 		_printenv();
 		return (3); /* loop again */
 	}
-	(void)she;
 	return (1); /* execute string */
 }
 

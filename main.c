@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 		string = NULL;
 		at = _prompt();
 		ret = getline(&string, &size, stdin);
-		x = _getnewline(string, ret, at);
+		x = _getnewline(string, ret, at, she);
 		if (x == 0) /* exit with no errors */
 			return (0);
 		else if (x == -1) /* exit with error code -1 */
