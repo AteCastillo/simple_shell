@@ -1,3 +1,4 @@
+#include <errno.h>
 #include "shell.h"
 
 /**
@@ -11,7 +12,7 @@ int forkenize(char **argv, char *string)
 
 {
 	pid_t child_pid;
-	int status;
+	int status, x = 0;
 	char *error = NULL;
 
 	if (argv[0] == NULL)
@@ -30,7 +31,8 @@ int forkenize(char **argv, char *string)
 	}
 	if (child_pid == 0) /* execute command checking for errors */
 	{
-		if (execve(argv[0], argv, NULL) == -1)
+		x = execve(argv[0], argv, NULL);
+		if (x == -1)
 		{
 			perror(argv[0]);
 			exit(126);
@@ -44,5 +46,7 @@ int forkenize(char **argv, char *string)
 
 	free(string);
 	free_memory(argv);
+	if (errno != 0)
+		return (errno);
 	return (0);
 }

@@ -81,7 +81,11 @@ char *findcom(char *string)
 
 	check = stat(stok, &buf);
 	if (check == 0)
+	{
+		free(find);
+		free(value);
 		return (stok);
+	}
 
 	ptok = strtok(value, ":");
 	while (ptok != NULL)
