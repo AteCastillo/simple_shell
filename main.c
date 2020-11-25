@@ -33,7 +33,7 @@ int main(void)
 
 /**
  * _prompt - for interactive mode
- * Return: nothing
+ * Return: status check
  */
 
 int _prompt(void)

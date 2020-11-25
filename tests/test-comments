@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo -e "\n-----------------------------\ntest hash # tag or pround I guess\n-----------------------------\n"
+echo hash # tag or pround I guess
+echo -e "\n-----------------------------\ntest Unseen Magic # Hey, i'm the magic\n-----------------------------\n"
+echo Unseen Magic # Hey, i'm the magic
+echo -e "\n-----------------------------\ntest ###3###\n-----------------------------\n"
+echo ###3###
+echo -e "\n-----------------------------\ntest ... #\n-----------------------------\n"
+echo ... #
+echo -e "\n-----------------------------\ntest this is# a test\n-----------------------------\n"
+echo this is# a test
+echo -e "\n-----------------------------\ntest this is#atest\n-----------------------------\n"
+echo this is#atest
+echo -e "\n-----------------------------\ntest print #me for fun\n-----------------------------\n"
+echo print #me for fun
+echo -e "\n-----------------------------\ntest I should print #; cal\n-----------------------------\n"
+echo I should print #; cal

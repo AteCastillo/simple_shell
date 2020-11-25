@@ -1,0 +1,10 @@
+#!/bin/bash
+echo -e "\n-----------------------------\nTEST RMDIR\n-----------------------------\n"
+rmdir test_mkdir
+echo -e "\nThe folder 'test_mkdir' shouldn't exist\n"
+ls
+echo -e "\n-----------------------------\nTEST RM\n-----------------------------\n"
+rm test_touch
+echo -e "\nThe file 'test_touch' shouldn't exist\n"
+ls
+echo -e "\n----END OF TEST----\n"

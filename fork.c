@@ -20,7 +20,7 @@ int forkenize(char **argv, char *string)
 		perror(error);
 		free(string);
 		free_memory(argv);
-		return (8);
+		return (127);
 	}
 	child_pid = fork();
 	if (child_pid == -1) /* check return of fork */

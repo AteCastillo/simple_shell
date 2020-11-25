@@ -87,8 +87,8 @@ char *findcom(char *string)
 	while (ptok != NULL)
 	{
 		find = _strcpy(find, ptok);
-		find = strcat(find, thingie);
-		find = strcat(find, stok);
+		find = _strcat(find, thingie);
+		find = _strcat(find, stok);
 		check = stat(find, &buf);
 		if (check == 0)
 		{
