@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://imgur.com/RFMr490>
+</p>
+
 # Simple Shell
 
 This is a simple UNIX command interpreter.
@@ -131,9 +135,12 @@ the shell searches for it in the list of shell builtins. If a builtin
 
 This program was written by:
 
-- Atenea Castillo
+- Atenea Castillo <[AteCastillo](https://github.com/AteCastillo)>
 
-- Micaela Percovich
+- Micaela Percovich <[mi-kei-la](https://github.com/mi-kei-la)>
 
 As part of the foundations programme of Holberton School.
 November, 2020.
+<p align="center">
+  <img src="http://www.holbertonschool.com/holberton-logo.png" alt="Holberton School logo">
+</p>
