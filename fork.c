@@ -12,7 +12,7 @@ int forkenize(char **argv, char *string, char *she)
 
 {
 	pid_t child_pid;
-	int status, x = 0;
+	int status;
 
 	if (argv[0] == NULL)
 	{
@@ -32,15 +32,16 @@ int forkenize(char **argv, char *string, char *she)
 		}
 		if (child_pid == 0) /* execute command checking for errors */
 		{
-			x = execve(argv[0], argv, NULL);
-			if (x == -1)
+			if (execve(argv[0], argv, NULL) == -1)
 			{
 				perror(she);
+				free(string);
+				free_memory(argv);
 				exit(126);
 			}
 			free(string);
 			free_memory(argv);
-			exit(0);
+			exit(126);
 		}
 		else
 			wait(&status);
