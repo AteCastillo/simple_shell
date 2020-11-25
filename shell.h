@@ -20,7 +20,7 @@ char **tokenize(char *string);
 int _getnewline(char *string, int ret, int at);
 int check(char *string);
 	/* fork file */
-int forkenize(char **argv, char *string);
+int forkenize(char **argv, char *string, char *she);
 	/* main file */
 int _prompt(void);
 	/* free file */
