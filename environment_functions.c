@@ -52,8 +52,8 @@ char *_getenv(char *name)
 		{
 			j = _strlen(environ[i]);
 			copy = malloc(j + 1);
-			for (k = 0; (k + x) <= j; k++)
-				copy[k] = environ[i][x + k];
+			for (k = 0; (k + x + 1) <= j; k++)
+				copy[k] = environ[i][x + k + 1];
 			return (copy);
 		}
 	}
@@ -76,7 +76,7 @@ char *findcom(char *string)
 	int check;
 
 	find = malloc(1024);
-	value = _getenv("PATH");
+	value = _getenv("PATH=");
 	stok = strtok(string, " "); /* we only need 1st token */
 
 	check = stat(stok, &buf);
