@@ -13,12 +13,12 @@ int forkenize(char **argv, char *string)
 {
 	pid_t child_pid;
 	int status, x = 0;
-	char *error = NULL;
+	char *error = "./hsh";
 
 	if (argv[0] == NULL)
 	{
-		error = strtok(string, " ");
-		perror(error);
+/*		error = strtok(string, " ");
+ */		perror(error);
 		free(string);
 		free_memory(argv);
 		return (127);
@@ -34,7 +34,7 @@ int forkenize(char **argv, char *string)
 		x = execve(argv[0], argv, NULL);
 		if (x == -1)
 		{
-			perror(argv[0]);
+			perror("erro1");
 			exit(126);
 		}
 		free(string);
