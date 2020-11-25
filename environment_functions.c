@@ -36,18 +36,25 @@ void _printenv(void)
 char *_getenv(char *name)
 {
 	extern char **environ;
-	int i;
-	size_t j;
+	int i; /* i loops environ */
+	unsigned int j; /* j is length of string */
+	unsigned int k; /* k loops to copy */
+	size_t x; /* x counts chars up to = */
+	char *copy;
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		for (j = 0; environ[i][j] != '='; j++)
+		for (x = 0; environ[i][x] != '='; x++)
 		{
 		}
-		if (_strncmp(name, environ[i], j) == 0)
+
+		if (_strncmp(environ[i], name, x) == 0)
 		{
-			strtok(environ[i], "=");
-			return (strtok(NULL, "="));
+			j = _strlen(environ[i]);
+			copy = malloc(j + 1);
+			for (k = 0; (k + x) <= j; k++)
+				copy[k] = environ[i][x + k];
+			return (copy);
 		}
 	}
 	return (NULL);
@@ -56,7 +63,6 @@ char *_getenv(char *name)
 /**
   * findcom - find command in the path
   *
-  * @value: value of variable PATH
   * @string: string to check
   *
   * Return: path of command, original string (first token) if not found
@@ -67,22 +73,33 @@ char *findcom(char *string)
 	char *value = NULL; /* path */
 	char *thingie = "/", *stok = NULL, *ptok = NULL, *find = NULL;
 	struct stat buf;
+	int check;
 
 	find = malloc(1024);
 	value = _getenv("PATH");
 	stok = strtok(string, " "); /* we only need 1st token */
-	if (stat(stok, &buf) == 0)
+
+	check = stat(stok, &buf);
+	if (check == 0)
 		return (stok);
 
 	ptok = strtok(value, ":");
 	while (ptok != NULL)
 	{
-		find = strcat(find, ptok);
+		find = _strcpy(find, ptok);
 		find = strcat(find, thingie);
 		find = strcat(find, stok);
-		if (stat(find, &buf) == 0)
+		check = stat(find, &buf);
+		if (check == 0)
+		{
+			free(stok);
+			free(value);
 			return (find);
+		}
 		ptok = strtok(NULL, ":");
 	}
-	return (stok);
+	free(stok);
+	free(find);
+	free(value);
+	return (NULL);
 }

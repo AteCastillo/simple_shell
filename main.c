@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	int ret, x, at; /*ret: getline, x: getnewline, at: isatty*/
+	int ret = 0, x = 0, at = 0; /*ret: getline, x: getnewline, at: isatty, y: fork*/
 	size_t size = 0;
 	char **argv = NULL, *string;
 
@@ -25,6 +25,7 @@ int main(void)
 		else if (x == 3) /* loop again */
 			continue;
 		argv = tokenize(string); /* load argv with tokens */
+		argv[0] = findcom(argv[0]);
 		forkenize(argv, string);
 	}
 	return (0);

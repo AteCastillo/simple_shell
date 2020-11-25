@@ -4,7 +4,7 @@
  *
  * @string: received string
  * @ret: return of getline function
- *
+ * @at: return of atty
  * Return: exit code
  */
 
@@ -46,7 +46,6 @@ int _getnewline(char *string, int ret, int at)
   * tokenize - load argv with string tokens
   *
   * @string: user input
-  * @argv: argument vector
   *
   * Return: double pointer (argument vector)
   */
@@ -60,8 +59,6 @@ char **tokenize(char *string)
 	k = _strlen(string);
 	toks = malloc(k * sizeof(char *));
 
-/*	fpath = findcom(string);
-*/
 	j = _strlen(string);
 	string[j - 1] = '\0';
 

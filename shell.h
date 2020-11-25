@@ -12,14 +12,14 @@
 /* environment_functions file */
 void _printenv(void);
 char *_getenv(char *name);
-char *findcom(char *string); /* find command */
+char *findcom(char *string);
 
 /* functions to help main */
 	/* getline file */
 char **tokenize(char *string);
 int _getnewline(char *string, int ret, int at);
 	/* fork file */
-void forkenize(char **argv, char *string);
+int forkenize(char **argv, char *string);
 	/* main file */
 int _prompt(void);
 	/* free file */
