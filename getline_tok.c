@@ -5,6 +5,7 @@
  * @string: received string
  * @ret: return of getline function
  * @at: return of atty
+ * @she: name of the shell
  * Return: exit code
  */
 

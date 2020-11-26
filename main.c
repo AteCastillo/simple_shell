@@ -3,6 +3,9 @@
 /**
   * main - entry point
   *
+  * @argc: argument counter
+  * @argv: argument vector
+  *
   * Return: 0 (success), -1 otherwise
   */
 

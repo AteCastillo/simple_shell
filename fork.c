@@ -5,7 +5,8 @@
  * forkenize - to fork the child
  * @argv: arguments received
  * @string: string received to free it
- * Return: nothing
+ * @she: name of shell for errors
+ * Return: exit status (0 on success)
  */
 
 int forkenize(char **argv, char *string, char *she)
@@ -27,7 +28,9 @@ int forkenize(char **argv, char *string, char *she)
 		child_pid = fork();
 		if (child_pid == -1) /* check return of fork */
 		{
-			perror("Error");
+			perror(she);
+			free(string);
+			free_memory(argv);
 			return (126);
 		}
 		if (child_pid == 0) /* execute command checking for errors */
