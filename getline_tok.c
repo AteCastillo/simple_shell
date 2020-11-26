@@ -63,11 +63,11 @@ char **tokenize(char *string)
 	unsigned int i = 0, j = 0, toklen = 0, k = 0;
 	char **toks = NULL;
 
-	k = _strlen(string);
+	k = _strlen(string); /* assign memory to double pointer */
 	toks = malloc(k * sizeof(char *));
 
 	j = _strlen(string);
-	string[j - 1] = '\0';
+	string[j - 1] = '\0'; /* remove new line */
 
 	token = strtok(string, " ");
 	while (token != NULL)
@@ -75,11 +75,11 @@ char **tokenize(char *string)
 		toklen = _strlen(token);
 		toks[i] = malloc(toklen + 1);
 		_strcpy(toks[i], token);
-		token = strtok(NULL, " ");
+		token = strtok(NULL, " "); /* go to next token */
 		i++;
 	}
-	toks[i] = NULL;
-	return (toks);
+	toks[i] = NULL; /* double pointer (vector) must end in null */
+	return (toks); /* it is assigned to argv */
 }
 
 /**
